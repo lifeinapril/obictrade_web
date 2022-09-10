@@ -1,0 +1,80 @@
+<div ng-include="'shared/banner.html'"></div>
+
+<section class="bg-blue">
+    <div class="container">
+
+
+            <h1 class="section-title text-center">
+              <strong>Join the ObicTrade Team</strong>
+                <h5 class="text-center" style="color: rgb(252, 247, 247) !important;">Start your career with us today!</h5>
+            </h1>
+  
+<br>
+      <div id="row">
+
+
+
+            <div id="why-us" class="why-us col-sm-12 col-xs-12 col-md-6">
+              <br>
+              <div class="flex-column bg-blue">
+
+              <div class="big-circle handshake">
+              </div>
+              
+              <div class="accordion-list bg-blue">
+                <ul>
+                  <li class="bg-blue">
+                    <a><span>01</span>  Sign up as an Agent</a>
+                  </li>
+                  <li class="bg-blue">
+                    <a><span>02</span>  Get Customers</a>
+                  </li>
+                  <li class="bg-blue">
+                    <a><span>03</span>  Earn Cash Rewards</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+              </div>
+
+            <div class="col-sm-12 col-xs-12 col-md-6 pull-right black">
+
+                    <h6 ng-show="error" class="text-danger text-center">{{error}}</h6>
+                    <form ng-submit="get_job(form)">
+                      <br>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                          <label><b>First name</b></label>
+                          <input type="text" class="form-control"  style="color: rgb(19, 17, 17) !important;" ng-model="form.first_name" name="first_name" id="first_name" placeholder="Enter first name" required>      
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                          <label><b>Last name </b></label>
+                          <input type="text" class="form-control" style="color: rgb(19, 17, 17) !important;" ng-model="form.last_name" name="last_name" id="last_name" placeholder="Enter last name" required>      
+                        </div>
+                      </div>
+                   
+                    
+                    <label><b>Email </b></label>
+                    <input type="email" class="form-control" style="color: rgb(19, 17, 17) !important;" autocomplete="false" ng-model="form.email" name="email" id="email" placeholder="Enter email" required>
+                   
+                    <label><b>Phone number</b> </label>
+                    <input type="tel" class="form-control" style="color: rgb(19, 17, 17) !important;" autocomplete="false"  ng-model="form.phone" name="phone" id="phone" placeholder="Enter phone number" required>
+           
+  
+                    <button ng-show="!show_loader" ng-disabled="!form.first_name || !form.last_name || !form.email || !form.phone" type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                    <b ng-show="show_loader">Please Wait...</b>
+                    <br>
+                    </form>
+
+
+            </div>
+    </div>
+  </div>
+    <br>
+</section>
+  
+  
+  
+  <div ng-include="'shared/footer.html'"></div>

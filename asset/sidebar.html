@@ -1,0 +1,112 @@
+
+<nav class="col-sm-3 col-md-2">
+<!-- 
+<div class="well hidden-xs hidden-sm" id="search-menu"> 
+  
+ <div class="form-inline">
+ 
+  
+   <div class="form-group" style="margin-top:6px;margin-bottom:6px;">
+    <label for="exampleInputEmail2">Keywords:</label>
+  <input style="width:100%" ng-model="fsrch" class="form-control" placeholder="Looking for...">
+  </div>
+  
+</div>
+
+</div> -->
+      <div class="categories-menu row">   
+  <!-- filter block End -->
+  <div ng-if="!cat">
+      <br><br>
+        <h4><b>Type</b></h4>        
+
+        <div id="categories-menu-content" class="hidden-xs hidden-sm" style="margin-bottom:50px;">
+    <div class="hidden-xs hidden-sm"  ng-repeat="product in products | unique:'type' | filter:{type:cat} | filter:{productbrand:brand}" style="cursor:pointer;">
+            <div class="col-md-12 col-sm-4  col-xs-12" style="padding-top:4px;padding-bottom:4px;">
+  
+<input type="checkbox" ng-click="includetype(product.type)"/> 
+                 {{product.type}}
+            </div> 
+             </div>
+         </div>
+</div>
+
+         
+  <!--/ filter block End -->
+  
+  
+     
+      
+  <!-- filter block End -->
+  
+  
+  <br><br>
+  <div ng-if="!brand">
+       <Br><Br>
+    <h4><b>Brands</b></h4>        
+
+        <div id="categories-menu-content" class="hidden-xs hidden-sm" style="margin-bottom:50px;">
+    <div class="hidden-xs hidden-sm"  ng-repeat="product in products | filter:{type:cat} | filter:{productbrand:brand} | unique:'productbrand'" style="cursor:pointer;">
+            <div class="col-md-12 col-sm-4  col-xs-12" style="padding-top:4px;padding-bottom:4px;">
+  
+<input type="checkbox" ng-click="includebrand(product.productbrand)" /> 
+                 {{product.productbrand}}
+            </div> 
+             </div>
+         </div>
+         </div>
+         
+         
+  <!--/ filter block End -->
+  
+      
+  <!-- filter block End -->
+  
+  
+  <br><br>
+  <div ng-if="clrs.length > 0">
+      
+    <Br><Br>
+      <h4><b>Colors</b></h4>   
+        <div id="categories-menu-content" class="hidden-xs hidden-sm" style="margin-bottom:50px;">    
+                <!-- <div ng-repeat="p in products | filter:cat | filter:brand"> -->
+    <div  class="hidden-xs hidden-sm"  ng-repeat="c in clrs | unique:'name'" style="cursor:pointer;">
+            <div class="col-md-12 col-sm-4  col-xs-12" style="padding-top:4px;padding-bottom:4px;">
+            <input type="checkbox" ng-click="includecolor(c.name)" /> 
+            &nbsp;
+            <div class="color-box" as-sortable-item-handle ng-style="{'background': c.color, 'background-image':'url(' + API_MEDIA +c.photo + ')'}"></div>
+                 {{c.name}}
+            </div> 
+             </div>
+        <!-- </div> -->
+         </div>
+         </div>
+         
+         
+  <!--/ filter block End -->
+  
+  
+
+
+<br><br>
+  <div ng-if="szs.length > 0">
+  
+    <Br><Br>
+      <h4><b>Sizes</b></h4>   
+          <div id="categories-menu-content" class="hidden-xs hidden-sm" style="margin-bottom:50px;">    
+                  <!-- <div ng-repeat="p in products | filter:cat | filter:brand"> -->
+      <div class="hidden-xs hidden-sm"  ng-repeat="s in szs | unique:'size'" style="cursor:pointer;">
+              <div class="col-md-12 col-sm-4  col-xs-12" style="padding-top:4px;padding-bottom:4px;">
+              <input type="checkbox" ng-click="includesize(s.size)" /> 
+                    {{s.size}}
+              </div> 
+               </div>
+          <!-- </div> -->
+           </div>
+  </div>
+
+         
+         
+     </div>
+     
+    </nav>

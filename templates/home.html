@@ -1,0 +1,53 @@
+<div ng-include="'shared/banner.html'"></div>
+
+
+
+
+
+<section class="home_cover">
+    <div class="row" style="background:none !important;">
+                <div class="col-sm-12 col-xs-12 col-md-6 text-left" style="background:none !important;">
+                    <div style="max-width:450px !important;margin: auto; float: left;">
+                            <div style="width:auto !important;margin: auto;display: block;">
+                                <b style="color: rgb(248, 245, 245) !important;font-size:25px !important;">
+                                    BUY AND SELL BITCOIN, GIFT CARDS <small>From</small> <b class="blue" style="font-size:45px !important;">OBICTRADE</b>
+                                </b>
+                                <br>
+                                <div style="font-size:21px !important;color:rgb(252, 249, 249);">
+                                    Trade GiftCards from everywhere in the world and get your sweet cash within minutes.
+                                </div>
+                                
+                                <div class="text-center row">
+                                    <a href="http://api.jolie.com.ng"><img src="images/google-white.svg" style="height:50px !important;margin: 5px;" /></a>
+                                    <a href="http://api.jolie.com.ng"><img src="images/apple-white.svg" style="width:150px !important;margin: 5px;"/></a>      
+                                </div>
+                                
+                                <div class="text-center row">
+                                    <button  ng-if="!user" data-dismiss="collapse"  data-toggle="modal" data-target="#tlogin" style="float: left;" class="btn btn-warning btn-large btn-lg btn-left btn-blue"><b>Get Started</b></button>
+                                    <a ng-if="user" data-dismiss="collapse" href="/user/dashboard"  style="float: left;" c lass="btn btn-warning btn-large btn-lg btn-left btn-blue"><b>Get Started</b></a>
+                                </div>
+                            </div>
+                    </div>
+                </div> 
+                <div class="col-sm-12 col-xs-12 col-md-6 text-left" style="background:none !important;">
+                    <!-- <br><img src="images/bg/a.png" width="90%" /> -->
+               </div>       
+    </div>
+</section>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<div ng-include="'shared/footer.html'"></div>

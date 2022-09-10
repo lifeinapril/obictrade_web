@@ -1,0 +1,24 @@
+
+
+      <section class="bg-white">    
+
+                 
+<form ng-submit="change_password(user)">
+  <b class="orange"><small>Security</small></b>
+                       <hr>
+          <label>Current password</label>
+          <input type="password" ng-model="user.old_password" placeholder="Type in your current password">          
+          <br>
+          <hr>
+          <h6 class="black">Please provide your new password to change your current password</h6>
+          <label>New Password</label>
+          <input type="password" ng-model="user.new_password" placeholder="New Password">
+          <label>Retype-Password</label>
+          <input type="password" ng-model="user.retype_password" placeholder="Retype Password"/>
+             <br>
+          <button type="submit" ng-show="!show_loader" class="btn btn-black">Update</button>
+          <b ng-show="show_loader">Please Wait...</b> 
+</form>   
+
+
+</section>

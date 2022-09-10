@@ -1,0 +1,46 @@
+<div ng-include="'shared/banner.html'"></div>
+
+<br><br><br>
+
+
+    <section id="faq" class="faq section-bg">
+        <form>
+  
+          <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+
+          <fieldset>
+              <input type="text" ng-model="search" placeholder="Search for help.">
+          </fieldset>
+  
+  
+        </form>
+
+        <div class="container">
+
+          <div class="faq-list">
+            <ul>
+
+
+              <li  ng-repeat="faq in faqs | filter:search track by $index">
+                <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-{{$index}}">{{faq.topic}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-{{$index}}" class="collapse show" data-parent=".faq-list">
+                  <p ng-repeat="answer in faq.answers">
+                    {{answer}}
+                  </p>
+                </div>
+              </li>
+  
+  
+            </ul>
+          </div>
+        </div>
+      </section>
+     
+      
+
+
+
+
+<div ng-include="'shared/footer.html'"></div>

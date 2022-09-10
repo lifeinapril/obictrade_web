@@ -1,0 +1,102 @@
+<div id="fh5co-page">
+
+  <div class="hidden-md hidden-lg" ng-include src="'templates/include/banner.html'"></div>
+  
+
+    <div class="col col-md-2" ng-include src="'templates/include/side.html'"></div>
+    
+  <div class="col col-md-10" style="background-color: rgb(4, 46, 85) !important;">
+        
+  <div class="content">
+             
+                <div class="row">
+                  <div class="col col-md-12 col-sm-12">
+                      <div class="box text-center" style="padding:10px !important;">
+   
+                        <div class="row text-left">
+                          <div class="col-md-12 col-sm-12">
+                            
+                                <form class="text-center">
+
+                                  <h2 class="black">Gift Cards</h2>
+
+                                  <h5 class="black">Search for giftcards to trade</h5>
+                                <input type="text" ng-model="srch"  placeholder="Search for gift cards.">
+                                </form>
+                                <br>
+                                   <div class="col-md-4 col-sm-12 col-xs-12" ng-repeat="asset in assets | filter:{type:'gift card'} | filter:srch | orderBy:'-_id'" style="color:#333;float: left;">
+                                    <div class="gift"><br>
+                                      <div class="display-img" ng-style="{'background-image':'url('+ media + asset.photo + ')'}">
+                                      </div>
+                                        <div class="box-footer bg-white text-center" style="border:none !important">
+                                          <br>
+                                          <b style="font-size: 18px !important;">{{asset.name | capitalize}}</b><br>
+                                          <!-- <v class="orange">{{asset.type | capitalize}}</v><br>
+                                          <small class="green">₦{{asset.rates}}/$</small> -->
+                                         
+                                        <div class="row padding text-center">
+                                          <div class="col col-md-6 col-sm-6 col-xs-6">
+                                            <a data-toggle="modal" data-target="#buyasset"  ng-click="select_asset(asset)" class="btn btn-primary btn-sm btn-small" style="background-color: rgb(95, 212, 17);margin:auto !important; color: rgb(255, 255, 255) !important;cursor: pointer;">&nbsp;&nbsp;Buy&nbsp;&nbsp;</a>
+                                          </div> 
+                                          <div class="col col-md-6 col-sm-6 col-xs-6">
+                                            <a data-toggle="modal" data-target="#tradeasset"  ng-click="select_asset(asset)" class="btn btn-primary btn-sm btn-small" style="background-color: rgb(253, 164, 91);margin:auto !important; color: rgb(255, 255, 255) !important;cursor: pointer;">&nbsp;&nbsp;Sell&nbsp;&nbsp;</a>
+                                          </div>
+                                      </div> 
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div class="text-center padding" ng-if="!assets || (assets | filter:{type:'gift card'}).length < 1">
+                                    <br><br> <b>No gift cards yet.</b>
+                                   </div>     
+                                 
+                        </div>
+  
+
+
+                          <!-- <div class="col col-md-4 hidden-sm hidden-xs">
+                  
+                            <div class="box padding" style="padding: 5px !important;">
+                              <br>
+                              <b>All Rates</b>
+                              <br><br>
+                                <li class="list-group-item">
+                                <b>Name</b> <b class="black pull-right">Selling</b>
+                                </li>
+                              <div class="list-group" ng-repeat="asset in assets">
+                                <li class="list-group-item">
+                                    <v>{{asset.name | capitalize}}</v>
+                                    <small class="orange pull-right">{{asset.currencies[0].rates || asset.rates | currency:'₦':0}}/{{asset.currencies[0].symbol || '$'}}</small>
+                                </li>
+                              </div>
+                            </div>
+                 
+                            </div> -->
+                        </div>
+  
+                      </div>
+                  </div>
+                
+                </div>
+  <br>
+  
+  
+  
+  
+                </div>
+   
+              </div>
+   
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<div ng-include src="'templates/popups/sell_asset.html'"></div>
+ 
+<div ng-include src="'templates/popups/buy_asset.html'"></div>
+ 

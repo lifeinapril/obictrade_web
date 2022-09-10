@@ -1,0 +1,34 @@
+<div class="container" ng-if="videos.length > 0">
+
+
+        <div class="row">
+        <h3 class="text-left" style="font-size: 20px;"><b>Related Videos</b></h3>
+        <h6 class="text-left">shows how products are used</h6>
+        </div>
+                  
+        <div class="row"> 
+                <a href="/watch/{{tc._id}}" class="col-sm-12 col-md-3 col-xs-12"  ng-animate="'animate'" ng-repeat="tc in videos | limitTo:4"  style="height:auto !important;cursor:pointer;">
+                    <div class="animate thumbnail" style="height: auto !important;">
+                            <div id="vcase">
+                                <video  class='img-responsive' style="background: #000000 !important;" preload="metadata">
+                                <source src="{{trustlink(API_MEDIA + tc.media)}}" />
+                                </video>
+                            </div>
+                            <div class="caption"  style="height:auto !important;margin-top:-20px !important;">
+                            <b style="font-size:16px;color:#000 !important;">{{tc.title}}</b><Br>
+                            <b style="color:rgb(58, 57, 57); font-size: 13px;">
+                                <img src="{{API_MEDIA + tc.artist.photo || 'images/default.png'}}" class="avatar img-circle img-thumbnail" style="width:20px !important;height:20px !important;">
+                                {{tc.artist.user_name}} 
+                            </b>
+                                <Br>
+                            <i>{{tc.viewers.length || 0 | number}} views . {{timediff(tc.date)}}</i>
+                            </div>
+                    </div>        
+            </a>
+        </div>  
+            
+            
+            
+            
+        </div>
+        

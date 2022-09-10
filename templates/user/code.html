@@ -1,0 +1,19 @@
+<section class="bg-blue" style="height: 100vh !important;">  
+  <div  class="container">
+      <br>
+                   <form ng-submit="verify_phone(code)" class="center-box text-center">
+                        <div class="text-center" style="width:190px !important;margin:auto !important;">
+                        <a href="/"><img src="images/obic.png" height="30"/></a>
+                        </div>
+                    <br>
+                        <h5 class="black">Enter code sent to <b class="blue">{{user.phone | phone_format}}</b></h5>
+                        <hr> 
+                        <input type="text" ng-model="code" placeholder="Enter Code Here"/>
+                        <button type="submit" class="btn btn-blue">Verify</button>
+                   
+                        <br>  
+                        <h5 ng-click="send_code(user.phone)" style="color: black !important;"> Didn't receive code? <b style="color:rgb(0, 106, 155);cursor: pointer !important;">Resend code</b></h5>
+                  </form> 
+  </div>
+  </section>
+  

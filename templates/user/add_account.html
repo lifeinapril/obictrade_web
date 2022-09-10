@@ -1,0 +1,42 @@
+<section class="bg-blue" style="height: 100vh !important;">  
+  <div  class="container">
+      <br>
+           
+                  <form class="text-center black" ng-submit="update_profile2(user)">
+                    <img src="images/obic.png" height="30" />
+                    <br>
+                    <br>
+                     <h5 style="color: rgb(28, 101, 161) !important;">Hello {{user.first_name | capitalize}}</h5>
+                    <h6 class="black">Add a bank account you want all your deposits to go to</h6>
+                    <hr> 
+
+                      <label class="text-left">Bank</label>
+                        <select class="text-left" ng-model="user.bank_account.bank" value="{{bank}}" ng-options="bank as bank.Name for bank in banks">
+                        </select>
+
+                      <label class="text-left">Account Number</label>
+                        <input class="text-left" ng-keydown="verify_bank_account(user)" type="text" ng-model="user.bank_account.account_number" placeholder="Account Number">
+                    
+
+                   <br>
+                   <div ng-if="!verifying">
+                   <fieldset ng-if="verification.accountname" style="padding:5px !important;">
+                    <b>{{verification.accountname}}</b>
+                  </fieldset>
+                   </div>
+                   <div ng-if="verifying">
+                     <b>verifying......</b>
+                   </div>
+                   <br>
+                   
+                        <button type="submit" ng-disabled="!user.bank_verified" class="btn btn-black">Save</button>
+                    <br>  
+                        <a href="/user/dashboard" style="color: black !important;"> I will do this later <b style="color:rgb(0, 106, 155); cursor: pointer !important;">Skip This</b></a>
+                  </form> 
+
+
+</div>
+</section>
+
+
+

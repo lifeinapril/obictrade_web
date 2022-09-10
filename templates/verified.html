@@ -1,0 +1,22 @@
+<section class="bg-blue" style="height: 100vh !important;">  
+    <div  class="container">
+        <br>
+        <form class="text-center">
+                <img src="images/obic.png" height="30" />
+                <br>
+                <br>
+             
+                <h2><b class="blue">Email Verification Successful!</b></h2>
+                <h5 style="color: black !important;">Your email has been verified and you can proceed to setting up your account and start trading with us today.</h5>
+                <Br><br><br>
+                    <a ng-if="!user.bank_account.bank.Name" href="/add_account"><button class="btn btn-lg btn-blue" style="margin:auto !important">Continue</button></a>
+                    <a ng-if="user.bank_account.bank.Name" href="/user/dashboard"><button class="btn btn-lg btn-blue" style="margin:auto !important">Continue</button></a>
+                    <br>
+                <br>
+        </form>
+    </div>    
+    
+    
+    
+</section>
+

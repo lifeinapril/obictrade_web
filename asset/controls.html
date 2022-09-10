@@ -1,0 +1,50 @@
+<aside class="main-sidebar padding" style=" background-color: rgb(66, 3, 18);position:fixed !important;">
+
+    <div class="sidebar" style="height:100% !important; background-color: rgba(255, 255, 255, 0);color:#fff !important;">
+
+
+
+                  <div class="user-panel" style="height:180px; z-index:100000; margin-top:-40px;">
+                    <div class="profile_card">
+                        <b style="color:#fff !important;">{{partner.company || 'guest company' | capitalize}}</b><br>
+                        <small style="color:#fff !important;">{{partner.first_name || 'james' | capitalize}} {{partner.last_name || 'dean' | capitalize}}</small><br>
+                        <small style="color:rgb(230, 164, 12) !important;"><b>ID</b> {{partner.j_id || '00000000'}}</small><br><br>
+                        <a ng-if="partner.status===4" style="color:#fff !important;"><i class="fa fa-circle text-success" style="color:greenyellow !important;"></i> Active</a>
+                        <a ng-if="partner.status!=4"  style="color:rgb(211, 207, 207) !important;"><i class="fa fa-circle text-success" style="color:rgb(255, 158, 47) !important;"></i> Inactive</a>
+                      </div>
+                    <br>
+                    <div class="pull-center">
+                      <button ui-sref="profile" type="button" class="btn btn-sm bg-red">Settings</button>
+                      <br>
+                    </div>
+                  </div>
+
+<br>
+
+    <!-- <hr> -->
+
+
+              <ul class="sidebar-menu tree" data-widget="tree">
+                    <li class="header"><b style="color:rgb(118, 119, 119) !important;">My Business</b><br>
+                        </li>
+                  <li><a href="/dashboard/home"><i class="fa ti-truck text-red"></i> <span style="color:#fff !important;">Dashboard</span></a></li>
+                  <li><a href="/dashboard/finance"><i class="fa ti-wallet text-red"></i> <span style="color:#fff !important;">Finance</span></a></li>
+                  <li><a href="/dashboard/inbox"><i class="fa ti-comment-alt text-red"></i> <span style="color:#fff !important;">Inbox</span> <span style="margin-top:-3px;background-color:rgb(255, 143, 38) !important;" ng-if="new_messages.length > 0" class="badge badge-warning pull-right">{{new_messages.length}}</span></a></li>
+                  <li><a href="/dashboard/stats"><i class="fa ti-bar-chart text-red"></i> <span style="color:#fff !important;">Stats</span></a></li>
+                  <li><a href="/dashboard/sales/history"><i class="fa ti-time text-red"></i> <span style="color:#fff !important;">History</span></a></li>
+                  <li class="header"><b style="color:rgb(118, 119, 119) !important;">Acquisitions</b><br>
+                    </li>
+                    <li><a href="/dashboard/inventory"><i class="fa ti-tag text-red"></i> <span style="color:#fff !important;">Inventory</span></a></li>
+                    <li><a href="/dashboard/partners"><i class="fa ti-briefcase text-red"></i> <span style="color:#fff !important;">Partners</span></a></li>
+                  <li><a href="/dashboard/customers"><i class="fa ti-user text-red"></i> <span style="color:#fff !important;">Customers</span></a></li>
+                  <!-- <li><a href="/dashboard/requests"><i class="fa ti-bolt-alt text-red"></i> <span style="color:#fff !important;">Requests</span></a></li> -->
+              </ul>
+
+
+
+            </div>
+
+
+
+</aside>
+         

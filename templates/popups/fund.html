@@ -1,0 +1,37 @@
+
+      
+  
+  <div class="modal fade bd-example-modal-sm" id="fund" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-sm">
+        <form class="modal-content" enctype="multipart/form-data" ng-submit="fund_wallet(amount)">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="black ti ti-close"></span></button>
+        </div>
+        <div class="modal-body">
+
+           
+            
+               <div class="list-group-item">
+                  <b>Amount to fund (₦)</b>
+                  <div class="form-group has-feedback">
+                    <input ng-model="amount" type="number" style="width:100%;color:#333 !important;" placeholder="Enter Amount" required>
+                  </div>
+                  <h6 class="black">Total amount you pay <b>{{(amount * 0.014)+100+amount || 0 | currency}}</b></h6>
+                </div>
+
+        </div>
+
+
+        
+    <div class="modal-footer text-center center">
+        <button ng-show="!show_loader" ng-disabled="!amount || (amount < 0)" type="submit" style="background:rgb(19, 18, 18) !important;color:#fff;" class="btn btn-lg btn-blue">&nbsp;&nbsp;Fund Wallet&nbsp;&nbsp;</button>
+        <b ng-show="show_loader">Please Wait...</b>
+    </div>
+
+        </form>
+  
+    </div>
+  </div>
+  
+  

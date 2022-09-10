@@ -1,0 +1,80 @@
+
+      <section class="bg-white">    
+
+        <form ng-submit="update_profile(user)">
+          <br>
+        <h5 class="orange">Personal information</h5>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-6">
+                <label class="black">First Name</label>
+                <input type="text" ng-model="user.first_name" placeholder="First Name"/>
+            </div>
+            <div class="col-md-6">     
+               <label class="black">Last Name</label>
+               <input type="text" ng-model="user.last_name" placeholder="Last Name"/>
+            </div>
+            
+            <div class="col-md-12">
+              <button type="submit" ng-show="!show_loader" class="btn btn-sm btn-small">Save</button>
+              <b ng-show="show_loader">Please Wait...</b></div>
+            </div>
+      </form>
+      
+      
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+          
+
+
+<br>
+<form ng-submit="verify_email(user.email)">
+  <br>
+  <h6 ng-if="!user.email_verified" class="red">Your email isn't verified yet. click <a style="color:rgb(0, 81, 255);text-decoration:underline;" ng-click="verify_email(user.email)">Here</a> to resend verification link to your email.</h6>
+  <h5 class="orange">Change email address</h5>
+  <hr>
+  <input type="email" ng-model="user.email" placeholder="Email"/>
+
+  <button type="submit" ng-show="!show_loader" class="btn btn-sm">Change Email</button>
+    <b ng-show="show_loader">Please Wait...</b>
+  </form>
+   
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+
+           
+              
+              
+              
+              <form ng-submit="update_phone(user)">
+                <br>
+                <h6 style="color: red !important;" ng-if="!user.phone_verified">Your phone number has not been verified yet</h6>       
+                <h5 class="orange">Change phone number</h5>
+                <hr>
+                <div class="row"> 
+                  <select class="col col-md-6" style="font-size: 17px !important; color: black !important;height: 60px !important;" ng-model="user.phone_format">
+                    <option value="" selected>Select a country</option>
+                    <option value="{{country.format}}" ng-repeat="country in countries">{{country.name}} ({{country.format}})</option>
+                  </select>         
+                  <input class="col col-md-6" type="tel" style="font-size: 18px !important;" ng-model="user.phone" placeholder="8098765432"/>
+               </div>
+                  <button type="submit" ng-disabled="!user.phone_format || !user.phone" ng-show="!show_loader" class="btn btn-sm btn-small">Change Phone Number</button>
+                    <b ng-show="show_loader">Please Wait...</b>
+             
+                  <br>
+                  <br>
+                  
+            </form>
+
+          </div>
+        </div> 
+                 
+
+
+
+
+
+
+                </section>

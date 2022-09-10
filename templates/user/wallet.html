@@ -1,0 +1,110 @@
+<div class="cyber">
+  
+    <div class="hidden-md hidden-lg" ng-include src="'templates/include/banner.html'"></div>
+    
+  
+  <div class="col col-md-2" ng-include src="'templates/include/side.html'"></div>   
+  <div class="col col-md-10 padding cyber">
+    <div class="content">
+        
+  
+      <section class="box box-body" ng-init="selected_currency=='usd'">
+          <br><br>
+          <select class="form-control2 pull-right" style="max-width: 100px !important; float:right !important;" ng-model="selected_currency" ng-change="change_currency(selected_currency)">
+              <option value="ngn">Nigerian Naira</option>
+              <option value="usd" selected>US Dollars</option>
+            </select>
+        <h2 class="title black">Wallets</h2>
+          <br>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 pull-right">
+                <div style="border-radius: 13px !important;" class="box-body border-radius bg-black col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center padding">
+                   <br>
+                   <h1 ng-if="selected_currency=='ngn'"><b class="balanced orange">{{naira_wallet_balance + (bitcoin_wallet_balance * selling_btc_ng) || 0 | currency}}</b></h1>
+                   <h1 ng-if="selected_currency=='usd'"><b class="balanced orange">${{(naira_wallet_balance + (bitcoin_wallet_balance * selling_btc_ng))/usd_naira.sell_rates || 0 | number:2}}</b></h1>
+                   <small>Combined Wallet Value</small>
+                    <br>
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 pull-left">
+                <br>
+                <div class="box padding border shades" style="padding: 5px !important;">
+                    <div class="box-title padding">
+                    <small><b>Local Currency</b></small>
+                    </div>
+                    <div class="box-body padding">
+                        <h1 ng-if="selected_currency=='ngn'"><b class="balanced green">{{naira_wallet_balance || 0 | currency}}</b></h1>
+                        <h1 ng-if="selected_currency=='usd'"><b class="balanced green">${{naira_wallet_balance / usd_naira.sell_rates || 0 | number:2}}</b></h1>
+                   </div>
+                    <div class="box-footer padding">
+                        <!-- <button  data-toggle="modal" data-target="#fund" class="pull-left btn btn-sm btn-default"><span class="fas fa-sign-in-alt"></span> Deposit</button> -->
+                        <button  data-toggle="modal" data-target="#widthdraw" class="pull-left btn btn-sm btn-default"><span class="fas fa-share-square"></span> Widthdraw</button>
+                        <!-- <a data-toggle="modal" data-target="#naira_transactions" class="pull-right btn btn-md btn-default btn-small">View Transactions</a> -->
+                    </div> 
+                    <br>
+                      <a data-toggle="modal" class="link" data-target="#naira_transactions">View Transactions</a>
+                </div>
+                <br>
+                <div class="box padding border shades" style="padding: 5px !important;">
+                    <div class="box-title padding">
+                    <small><b>Bitcoin</b></small>
+                     
+                    <small ng-if="selected_currency=='ngn'" class="pull-right" style="font-size: 14px !important;"><b style="color: rgb(13, 39, 13) !important;">{{selling_btc_ng || 0 | currency:'₦':0}}</b> / BTC</small>
+                    <small ng-if="selected_currency=='usd'" class="pull-right" style="font-size: 14px !important;"><b style="color: rgb(13, 39, 13) !important;">${{selling_btc_ng/usd_naira.sell_rates || 0 | number:2}}</b> / BTC</small>
+              
+                    </div>
+                    <div ng-if="user.bitcoin_wallet.active" class="box-body padding">
+                        <br>
+                    <h1>
+                        <b class="balanced oran">{{bitcoin_wallet_balance || 0.000000}} <small>BTC</small></b>
+                        <h4  ng-if="selected_currency=='ngn'" class="black" style="font-size: 18px !important;"><b class="green">{{bitcoin_wallet_balance * selling_btc_ng  || 0 | currency}}</b></h4>
+                        <h4  ng-if="selected_currency=='usd'" class="black" style="font-size: 18px !important;"><b class="green">${{(bitcoin_wallet_balance * selling_btc_ng)/usd_naira.sell_rates  || 0 | number:2}}</b></h4>
+                    </h1>
+                    </div>
+                    <div ng-if="user.bitcoin_wallet.active" class="box-footer padding">
+                        <button  data-toggle="modal" data-target="#btc_buy" ng-click="selling_btc_converter(0)" class="pull-left btn btn-md btn-green btn-small"><span class="fas fa-caret-up"></span> Buy</button>
+                        <button  data-toggle="modal" data-target="#btc_sell" ng-click="selling_btc_converter(0)" class="pull-left btn btn-md btn-warning btn-small"><span class="fas fa-caret-down"></span> Sell</button>
+                        <br><br><br>
+                        <button  data-toggle="modal" data-target="#btc_send" ng-click="selling_btc_converter(0)" class="pull-right btn btn-md btn-default btn-small"><span class="fas fa-paper-plane"></span> Send</button>
+                       <button  data-toggle="modal" data-target="#btc_recieve" class="pull-right btn btn-md btn-default btn-small"><span class="fas fa-donate"></span> Receive</button>
+                       </div>  
+                       <br>
+                       <a data-toggle="modal" class="link" data-target="#btc_transactions">View Transactions</a>
+                  
+                </div>
+                <div ng-if="!user.bitcoin_wallet.active">
+                    <button ng-if="user.bitcoin_wallet.address" ng-click="create_btc_wallet()" class="pull-left btn btn-default btn-small"><span class="fas fa-sync-alt"></span> Refresh Bitcoin Wallet</button>
+                </div>
+            </div>
+        </div>
+      </section>
+
+
+  <hr>
+    
+    </div>
+  </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<div ng-include src="'templates/popups/widthdraw.html'"></div>
+<div ng-include src="'templates/popups/fund.html'"></div>
+<div ng-include src="'templates/popups/naira_transactions.html'"></div>
+
+
+
+
+
+<div ng-include src="'templates/popups/btc_recieve.html'"></div>
+<div ng-include src="'templates/popups/btc_send.html'"></div>
+<div ng-include src="'templates/popups/btc_sell.html'"></div>
+<div ng-include src="'templates/popups/btc_buy.html'"></div>
+<div ng-include src="'templates/popups/btc_transactions.html'"></div>

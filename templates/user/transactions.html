@@ -1,0 +1,111 @@
+<div id="fh5co-page">
+
+  <div class="hidden-md hidden-lg" ng-include src="'templates/include/banner.html'"></div>
+  
+
+    <div class="col col-md-2" ng-include src="'templates/include/side.html'"></div>
+    
+  <div class="col col-md-10" style="background-color: rgb(4, 46, 85) !important;">
+        
+  <div class="content">
+        
+
+      <div class="row" style="padding:10px !important;">
+        <br><br>
+        <b style="color: rgb(250, 250, 250) !important;">
+        Transactions ({{transactions.length || 0}})
+        </b>
+        <br>
+        <small style="color: aliceblue;">Manage all your transactions</small>
+      </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">
+                    <div class="box padding" style="padding:10px !important;overflow:scroll !important;">
+                      <div class="col-md-3 col-sm-3 col-xs-3 pull-right">
+                        <select ng-model="dropfilter" ng-change="filter_status(dropfilter)">
+                          <option value="" selected>All</option>
+                          <option value="1" selected>Pending</option>
+                          <option value="2" selected>Successful</option>
+                          <option value="0" selected>Declined</option>
+                        </select>
+                      </div>
+                      <table class="table table-hover">
+                              <tbody>
+                                <tr style="color:rgb(39, 38, 38);background-color: rgb(252, 248, 248);border: 1px solid rgb(247, 244, 244);">
+                                  <th>Transaction ID</th>
+                                  <th>Transaction Type</th>
+                                  <th>Status</th>
+                                  <th>Amount</th>
+                                  <th>Date</th>
+                                  <th></th>
+                          </tr>
+                
+                          <tr ng-repeat="p in transactions | filter:{status:dropfilter} | orderBy:'-date_created'" style="cursor:pointer;" data-toggle="modal" data-target="#viewtransaction"  ng-click="select_transaction(p)">
+                            <td>{{p.transaction_id}}</td>
+                            <td><v>{{p.name | capitalize}}</v> <small class="orange">{{p.type | capitalize}}</small></td>  
+                              <td>
+                              <b class="black" ng-if="p.status==1">Pending...</b>
+                              <b class="red" ng-if="p.status==0">Declined</b>
+                              <b class="green" ng-if="p.status==2">Successful</b>
+                            </td>
+                            <td>
+                              <b ng-if="p.type=='cryptocurrency'">{{p.symbol || '$'}} {{p.amount || 0}}</b>
+                              <div ng-if="p.type=='gift card'">
+                                <b ng-if="card.quantity > 0" ng-repeat="card in p.cards">{{p.symbol || '$'}} {{card.amount || 0}} ,</b>
+                              </div>
+                            </td>
+                            <td>{{p.date_created | date}}</td>
+                          </tr>
+                
+                    
+                            </tbody>
+                          </table>  
+  
+  
+                          <div class="text-center padding" ng-if="!transactions || transactions.length < 1">
+                           <br><br> <v>You Haven't Made Any Transaction Yet</v>
+                          </div>      
+                        </div>
+     
+                    </div>
+        
+  
+                  <div class="col col-md-3 col-sm-12">
+                    <div class="box" style="padding:10px !important;">
+                      <b>Statistics</b>
+                      <br>
+                      <br><hr>
+                          <div class="c">
+                            <small>Successful Transactions</small>
+                            <h1 class="blue">{{(transactions | filter:{status:2}).length || 0}}</h1>
+                          </div>
+                          <div class="c">
+                            <small>Pending Transactions</small>
+                            <h1 class="blue">{{(transactions | filter:{status:1}).length || 0}}</h1>
+                          </div>
+                          <div class="c">
+                            <small>Declined Transactions</small>
+                            <h1 class="blue">{{(transactions | filter:{status:0}).length || 0}}</h1>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+  
+                </div>
+   
+              </div>
+   
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<div ng-include src="'templates/popups/view_transaction.html'"></div>

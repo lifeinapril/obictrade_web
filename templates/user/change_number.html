@@ -1,0 +1,32 @@
+<section class="bg-blue" style="height: 100vh !important;">  
+  <div  class="container">
+      <br>
+      <form class="text-center" ng-submit="update_phone(user)">
+              <img src="images/obic.png" height="30" />
+              <br>
+              <br>
+              <b style="color: rgb(28, 101, 161) !important;">Hello {{user.first_name | capitalize}}</b>
+              <h5 class="black">Change your phone number</h5>
+              <hr> 
+              <div class="row"> 
+                <select class="col col-md-6" style="font-size: 17px !important; color: black !important;height: 60px !important;" ng-model="user.phone_format">
+                  <option value="" selected>Select a country</option>
+                  <option value="{{country.format}}" ng-repeat="country in countries">{{country.name}} ({{country.format}})</option>
+                </select>         
+              <input class="col col-md-6" type="tel" style="font-size: 18px !important;" ng-model="user.phone" placeholder="8098765432"/>
+             </div>
+             <button type="submit" ng-disabled="!user.phone_format || !user.phone" class="btn btn-blue">Update</button>
+        <br>
+      </form>   
+  </div>  
+  
+  
+  
+</section>
+
+
+
+
+
+
+        

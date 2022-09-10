@@ -1,0 +1,35 @@
+<section class="bg-blue" style="height: 100vh !important;">  
+    <div  class="container">
+        <br>
+        <form class="text-center" ng-submit="update_phone(user)">
+                <img src="images/obic.png" height="30" />
+                <br><br>
+                <h2><b class="blue">Verify Phone Number</b></h2>
+                <small style="color: black !important;">Your phone number isn't verified yet. A code would be sent to this number <b class="blue">{{user.phone | phone_format}}</b> for verification.</small>
+                <Br><br>
+                    <a ng-click="send_code()" style="margin: auto !important;" class="btn btn-blue text-center">send code</a>
+                    <br>
+                    <br>
+                    <a style="text-decoration: underline !important;" href="/change_number">change your phone number</a>
+               <br>
+                <br>
+                
+  <a  data-toggle="modal" data-target="#logout"  style="margin:auto !important;color: aliceblue !important;" class="btn btn-danger btn-sm btn-small hidden-sm">
+    &nbsp;&nbsp;&nbsp;<b>Logout</b>&nbsp;&nbsp;&nbsp;
+  </a>
+        </form>   
+        <Br><br>
+    </div>  
+    
+    
+    
+  </section>
+  
+  
+  
+
+<div ng-include src="'templates/popups/logout.html'"></div>
+    
+    
+
+

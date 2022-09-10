@@ -1,0 +1,23 @@
+<style>
+a:active{
+        background: #f1d84c00 !important;
+        color: #ff0606 !important;
+        font-weight: bolder !important;
+    }
+</style>
+<div class="col-sm-12 hidden-lg hidden-md text-center">
+                <a href="/artist/edit" style="margin:10px;">EDIT PROFILE</a>
+                <a href="/artist/security" style="margin:10px;">SECURITY AND PRIVACY</a>
+</div>
+<div class="col-sm-11 col-md-3 col-xm-3 hidden-sm hidden-xs">
+        <fieldset style="border:1px solid #bdbcbc; padding:10px;background:#fff !important;border-radius: 8px;">
+        <div class="text-center">
+        <h3>HI <b>{{ artist.first_name | uppercase }},</b></h3>
+        </div>
+        <br>
+        <a href="/artist/edit"><h6>EDIT PROFILE  <span class="fa fa-chevron-right active pull-right"></span></h6></a><br>
+        <a href="/artist/security"><h6>SECURITY AND PRIVACY <span class="fa fa-chevron-right pull-right"></span></h6></a><br>
+        </fieldset>
+           </div>
+        
+        

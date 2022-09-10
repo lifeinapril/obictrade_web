@@ -1,0 +1,48 @@
+<div ng-include="'shared/banner.html'"></div>
+
+
+
+
+<div class="padding container bg-blue">
+    <div class="text-center padding row">
+        <div class="col-md-6 col-sm-12">
+            <div class="padding text-center">
+                <br><br>
+                <h1 style="font-size: 50px !important;">Trade the best rates on <Br> <img src="images/obiccoins.png" height="170" style="margin-top: -8px !important;"/> <small style="margin-top:10px !important;margin-left: -50px !important;font-size: 30px !important;">C O I N S</small></h1>
+                <h2><small style="color: lightblue !important;font-size: 19px !important;">Obic Coins makes it easy for you to trade and store bitcoins</small> </h2>
+                <div class="text-center row">
+                    <a  href="http://coins.obictrade.com"  style="background-color:rgb(255, 255, 255) !important;color:rgb(15, 15, 15) !important;margin:auto;width: 200px !important;margin:auto !important;border:none !important; padding: 19px !important;" class="btn btn-warning btn-large btn-lg btn-left"><b>START TRADING</b></a>
+                </div>
+                <br>
+            </div>
+        </div> 
+        <div class="col-md-6 col-sm-12 padding">
+            <div class="center-box">  
+                <div class="card bg-black">   
+                        <div class="text-center card-header">
+                            <small style="font-size: 14px !important;">BTC - <b style="color: rgb(20, 248, 20) !important;">{{selling_btc_ng || 0 | currency}}</b></small>
+                        </div>
+                        <br>
+                        <div class="card-body">
+                           <div class="input-group"> 
+                            <v class="pull-left">Amount of BTC <small>(BTC)</small></v>
+                                <input ng-model="btc_value" maxlength="10" ng-keyup="selling_btc_converter(btc_value)" type="text" class="form-control2" style="margin-left:0px !important;float: left;color:#fff !important;" placeholder="0.00000000">
+                            </div> 
+                            <br><br>
+                            <div class="input-group"> 
+                                <v class="pull-left">Naira Value <small>(₦)</small></v>
+                                <input ng-model="naira_value" maxlength="10" ng-keyup="selling_naira_converter(naira_value)" type="text" class="form-control2" style="margin-left:0px !important;float: left;color:#fff !important;" placeholder="0">
+                                </div> 
+                        </div>          
+            <br><br><br>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+
+
+
+    
+ <div ng-include="'shared/footer.html'"></div>

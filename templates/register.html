@@ -1,0 +1,73 @@
+<!-- <div ng-include="'shared/banner.html'"></div>
+ -->
+ <div class=" bg-city">
+
+ <br><br>
+ 
+ <div style="display: flex;">
+  <img src="images/obic.png" height="50" style="margin:auto !important;direction: ltr;justify-content: center;"/>
+</div>
+
+
+<br>
+<div class="container">
+ 
+      <form ng-submit="register(form)">
+        <h4 class="text-center black">Let's get to know you.</h4>
+        <!-- <h6 class="text-center black">Already have an account? <a style="color:rgb(0, 106, 155); cursor: pointer !important;" data-toggle="modal" data-target="#tlogin">Sign In</a></h6> -->
+        <h6 ng-if="error" class="text-danger text-center">{{error}}</h6>
+       <!-- <div class="row">
+              
+            <div class="col-md-6">
+                <label for="name">First Name:</label>
+                <input type="text" ng-model="form.first_name" id="name" name="first_name">
+            </div>
+
+            <div class="col-md-6">
+                <label for="name">Last Name:</label>
+                <input type="text" ng-model="form.last_name" id="name" name="last_name">
+            </div>
+
+          </div> -->
+
+          <label for="mail">Your Name</label>
+          <input type="text" ng-model="form.full_name"  placeholder="full name" id="name" name="full_name">
+
+          <label for="mail">Username</label>
+          <input type="text" ng-model="form.user_name"  placeholder="username" id="user_name" name="user_name">
+
+
+          <label for="mail">Email:</label>
+          <input type="email" ng-model="form.email"  placeholder="you@xyz.abc" id="mail" name="email">
+
+          <label for="mail">Phone:</label>
+          <input type="tel" ng-model="form.phone" placeholder="+2348098765432" id="phone" name="phone">
+          
+          <label for="password">Password:</label>
+          <input type="password" ng-model="form.password" id="password" name="password">
+          
+          <label for="password">Retype Password:</label>
+          <input type="password" ng-model="form.rpassword" id="rpassword" name="rpassword">
+          
+       <h6 class="black">By clicking register you have agreed to the <a class="link" href="/terms">Terms & Conditions</a></h6>
+       
+      <br>               
+      <b ng-show="show_loader">Please Wait...</b>
+        <button ng-show="!show_loader"  ng-disabled="!form.full_name || !form.user_name || !form.email  || !form.phone  || !form.password" type="submit">Sign Up</button>
+       <br>
+       </form>
+      
+
+
+
+
+</div>
+
+
+</div>
+
+<div ng-include="'shared/footer.html'"></div>
+
+
+
+<div ng-include src="'templates/popups/signin.html'"></div>

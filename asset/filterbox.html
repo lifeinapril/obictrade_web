@@ -1,0 +1,24 @@
+
+
+<div class="panel panel-right">
+    <div class="panel-body">
+    
+    <div class="row">
+   
+         <select id="opter" ng-model="filtor" ng-change="swf(filtor)">
+                <option  style="white-space:nowrap; -webkit-appearance:button;text-overflow:ellipsis;" value="" style="display: none;" disabled selected>Sort</option>
+                <option  style="white-space:nowrap; -webkit-appearance:button;text-overflow:ellipsis;" value="random">Recommended</option>
+                <option style="white-space:nowrap; -webkit-appearance:button;text-overflow:ellipsis;" value="-_id">What's New</option>
+                <option style="white-space:nowrap; -webkit-appearance:button;text-overflow:ellipsis;" value="price">Price - Low To High</option>
+                <option style="white-space:nowrap; -webkit-appearance:button;text-overflow:ellipsis;" value="-price">Price - High To Low</option>
+         </select>
+
+         <h5>{{amt_products || 0}} found.</h5>
+
+    
+         
+        </div>
+        
+    </div>
+
+  </div>

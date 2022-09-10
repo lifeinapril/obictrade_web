@@ -1,0 +1,59 @@
+
+      
+  
+  <div class="modal fade bd-example-modal-md" id="widthdraw" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-sm">
+        <form class="modal-content" enctype="multipart/form-data" ng-submit="widthdraw(amount,user.bank_account)">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="black ti ti-close"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+             
+
+          <div ng-if="error" class="padding text-center">
+            <h6 class="red">{{error}}</h6>
+         </div>
+                <div class="list-group">
+                    <li class="list-group-item">
+                    <v>Wallet Balance</v> <b class="green pull-right">{{naira_wallet_balance || 0 | currency}}</b>
+                    </li>
+                </div>
+               <div class="list-group-item">
+                  <b>Amount to withdraw (₦)</b>
+                  <div class="form-group has-feedback">
+                    <input ng-model="amount" type="number" style="width:100%;color:#333 !important;" placeholder="Enter Amount" required>
+                  </div>
+                  <a class="pull-right btn btn-sm btn-small btn-default" ng-click="max_naira()">Max amount</a>
+          
+                  <h6 class="black">Withdrawal charge is NGN 50, Total amount withdrawing <b>{{amount+50 || 0 | currency}}</b></h6>
+                  <h6 ng-if="!user.bank_account.bank.Name" class="red">Your account isn't verified yet. go to settings to verify your bank account.</h6>
+                 </div>
+                    
+        <!-- <ul class="list-group paddng">
+            <small><b>Amount would be transfered to your deposit account</b></small>
+            <br> 
+             <small ng-if="!user.bank_verified" class="red">Your account isn't verified yet. go to settings to verify your bank account.</small>
+                  <br>
+           <li class="list-group-item"><v>Bank</v> <b class="pull-right">{{user.bank_account.bank.Name | capitalize}}</b></li>
+            <li class="list-group-item"><v>Account Number</v> <b class="orange pull-right">{{user.bank_account.account_number}}</b></li>
+            <br>
+            <h6 class="black padding">You can update your deposit account in settings</h6>
+        </ul> -->
+
+        </div>
+
+
+        
+    <div class="modal-footer text-center center">
+        <button ng-show="!show_loader" ng-disabled="!amount || (amount < 0) || !user.bank_account.bank.Name" type="submit" style="background:rgb(199, 96, 0);color:#fff;" class="btn btn-lg btn-black">&nbsp;&nbsp;Withdraw&nbsp;&nbsp;</button>
+        <b ng-show="show_loader">Please Wait...</b>
+      </div>
+
+        </form>
+  
+    </div>
+  </div>
+  
+  

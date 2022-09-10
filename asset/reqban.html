@@ -1,0 +1,18 @@
+
+    <div class="col-sm-12 text-center">
+        <a href="/artist/requests/pending" style="margin:15px;">
+            New 
+            <c ng-if="new_requests.length < 1"> ({{new_requests.length || 0}}) </c>
+            <span ng-if="new_requests.length > 0" style="background-color:rgb(255, 38, 38) !important;color:#fff !important;" class="badge badge-warning">
+              {{new_requests.length}}
+            </span>
+        </a>
+        <a href="/artist/requests/current" style="margin:15px;">Current 
+            <c ng-if="current_requests.length < 1"> ({{current_requests.length || 0}}) </c>
+            <span ng-if="current_requests.length > 0" style="background-color:rgb(255, 161, 38) !important;color:#fff !important;" class="badge badge-warning">
+              {{current_requests.length}}
+            </span>
+        </a>
+        <a href="/artist/requests/past" style="margin:15px;">Past ({{old_requests.length || 0}})</a>
+    </div>
+    <Br>

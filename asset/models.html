@@ -1,0 +1,21 @@
+<div class="container" ng-if="works.length > 0">
+
+
+        <div class="row">
+        <h3 class="text-left" style="font-size: 20px;"><b>Models</b></h3>
+        <h6 class="text-left">photos of beauty by product and others</h6>
+        </div>
+                  
+        <div class="row"> 
+        
+    <figure class="col-md-4" ng-repeat="work in works | limitTo:4">
+            <a href="{{API_MEDIA + work.photo}}">
+                <img alt="picture" src="{{API_MEDIA + work.photo}}" class="img-fluid">
+            </a>
+        </figure>
+    
+        </div>  
+        
+        
+</div>
+        

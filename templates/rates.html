@@ -1,0 +1,93 @@
+<div ng-include="'shared/banner.html'"></div>
+
+
+
+
+
+
+<section class="bg-mapx" id="rates" name="rates">
+    <div class="center-box">  
+        <form>   
+                <div class="text-center">
+                    <b>Our Rates:<br><small style="color: rgb(187, 187, 187) !important;">The Best Every Time.</small></b>
+                </div>
+                <br>
+                <select name="asset" ng-model="selected_asset" ng-change="check_rates(selected_asset)"  ng-options="asset as asset.name for asset in assets | filter:{type:'gift card'}">
+                </select>
+                <select name="currency" ng-model="currency" ng-change="change_currency(currency)"  ng-options="curr as curr.name + ' ('+curr.symbol+')' for curr in selected_asset.currencies">
+                </select>
+                <select name="card_type" ng-if="selected_asset.type=='gift card'" ng-model="selected_asset.card_type" ng-change="change_card_type(selected_asset.card_type)"  ng-options="ct as ct for ct in selected_asset.card_types">
+                </select>
+                <fieldset class="text-center">
+                    <span>Rate</span>
+                     <h3 style="font-size: 22px !important;color: rgb(4, 82, 1);">{{selected_asset.rates || 0 | currency:'₦':0}}/{{selected_asset.symbol || '$'}}</h3>
+                     <input type="text" ng-model="amount" placeholder="Enter Amount ({{selected_asset.symbol || '$'}})">
+                     <b class="black">Total Payout</b>
+                    <h3 style="font-size: 33px !important;color:rgb(39, 202, 39) !important;">{{selected_asset.rates * amount || 0 | currency:'₦'}}</h3>
+                </fieldset> 
+                <br><br>
+        </form>
+</div>
+
+<br>
+<br>
+<br>
+</section>
+
+
+    
+      
+<section>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client1.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client2.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client3.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client4.svg" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+      
+  <section class="bg-white">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client1.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client2.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client3.svg" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-3 d-flex align-items-center text-center justify-content-center">
+          <img src="images/client4.svg" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+  </section>
+
+
+<div ng-include="'shared/footer.html'"></div>

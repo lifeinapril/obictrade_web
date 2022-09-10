@@ -1,0 +1,50 @@
+<div ng-include="'shared/banner.html'"></div>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+
+<div id="text-center" ng-controller="Auth">
+    <a href="/" style="text-decoration:none; margin-bottom:10px !important;" class="row text-center">
+      <h3 class="text-center"><b style=" font-size:25px;color:darksalmon;">Reset Your Password</b></h3>
+    </a>
+    <h6 class="text-center" style="margin:auto;color:#999;max-width:300px;">Provide an existing email to reset forgotten password, your reset email will be sent immediately.</h6>
+    <div class="container">
+    <hr>
+    <h6 class="text-danger text-center" style="margin-top:-21px;">{{error}}</h6>
+     <form ng-submit="reset(form.email)" class="form-horizontal text-center" role="form">
+     
+     
+        <div class="form-group">
+        <div class="col-sm-12">
+          <input type="email" class="form-control" name="email" ng-model='form.email' id="email" placeholder="Enter email">
+        </div>
+      </div>
+     
+      <b ng-show="show_loader">
+      <i class="icon-loader spin"> Loading…</i>
+      </b>
+      <button ng-show="!show_loader" ng-disabled="!form.email" type="submit" class="btn btn-lg btn-blue text-center" style="margin:auto !important;">
+        RESET
+      </button>
+
+      <br>
+
+      <div class="form-group"> 
+        <div class="col-md-12 col-sm-12">
+          <a style="color:#323232;">Don't have an account yet?  click </a><a href="/register" style="text-decoration:underline;">Register</a>
+        </div>
+       
+      </div>
+    </form>
+    </div>
+    </div>
+    
+    <br><br>
+
+<div ng-include="'shared/footer.html'"></div>

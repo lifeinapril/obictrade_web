@@ -1,0 +1,147 @@
+<div id="fh5co-page">
+  <div class="hidden-md hidden-lg" ng-include src="'templates/include/banner.html'"></div>
+  
+
+  <div class="col col-md-2" ng-include src="'templates/include/side.html'"></div>
+  
+<div class="col col-md-10" style="background-color: rgb(4, 46, 85) !important;">
+      
+<div class="content">
+             <div class="row">
+                <div class="col col-md-12 col-sm-12">
+                    <div class="box" style="padding:10px !important;">
+                        <br>
+                        <div class="pull-right" style="float: right !important;padding-right: 20px !important;">
+                          <b ng-if="hdt" style="color: rgb(226, 148, 4) !important;float:right !important;">
+                            <v ng-if="selected_currency=='ngn'">{{user.naira_wallet.balance || 0 | currency}}</v>
+                            <v ng-if="selected_currency=='usd'">${{user.naira_wallet.balance/usd_naira.sell_rates || 0 | number:2}}</v>
+                          </b>
+                          <b ng-if="!hdt" style="color: rgb(28, 29, 31) !important;float:right !important;">*****</b><br>
+                          <small> Total Balance</small>&nbsp;&nbsp;
+                        <span style="cursor: pointer !important;" ng-if="!hdt" class="ti ti-lock orange" ng-click="show_balance()"></span>
+                        <span style="cursor: pointer !important;" ng-if="hdt" class="ti ti-unlock" ng-click="hide_balance()"></span>
+                        </div>
+                        <b style="color: rgb(28, 101, 161) !important;">Hello {{user.first_name | capitalize}}</b>,<br>
+                        <small> Welcome to your dashboard</small>
+                        <br>
+                        <br>
+                        <hr>
+<!-- <br>
+<marquee>
+  <small style="padding: 10px !important;" ng-repeat="asset in assets">{{asset.name}} - <small class="orange">₦{{asset.currencies[0].rates || asset.rates || 0}}/{{asset.currencies[0].symbol || '$'}}</small></small> &nbsp;&nbsp;
+</marquee>
+<Br> -->
+<b>Gift Cards For You</b>
+<br>
+<br>
+                      <div class="row">
+
+                                <div class="col-md-6 col-sm-12 col-xs-12" ng-repeat="mm in assets  | filter:{type:'gift card'} | orderBy:'rates' | limitTo:4" style="color:#333;float: left;">
+                                  <div class="gift"><br>
+                                    <div class="display-img" ng-style="{'background-image':'url(' + media + mm.photo + ')'}">
+                                    </div>
+                                      <div class="box-footer bg-white" style="border:none !important">
+                                        <br>
+                                        <b style="font-size: 18px !important;">{{mm.name | capitalize}}</b><br>
+                                        <!-- <v class="orange">{{mm.type | capitalize}}</v><br>
+                                        <small class="green">₦{{mm.rates}}/$</small> -->
+                                        <div class="row padding text-center">
+                                            <div class="col col-md-6 col-sm-6 col-xs-6">
+                                              <a data-toggle="modal" data-target="#buyasset"  ng-click="select_asset(mm)" class="btn btn-primary btn-sm btn-small" style="background-color: rgb(95, 212, 17);margin:auto !important; color: rgb(255, 255, 255) !important;cursor: pointer;">&nbsp;&nbsp;Buy&nbsp;&nbsp;</a>
+                                            </div> 
+                                            <div class="col col-md-6 col-sm-6 col-xs-6">
+                                              <a data-toggle="modal" data-target="#tradeasset"  ng-click="select_asset(mm)" class="btn btn-primary btn-sm btn-small" style="background-color: rgb(253, 164, 91);margin:auto !important; color: rgb(255, 255, 255) !important;cursor: pointer;">&nbsp;&nbsp;Sell&nbsp;&nbsp;</a>
+                                            </div>
+                                        </div>  
+                                      </div>
+                                  </div>
+                                </div>
+
+                                <br>
+                                <div class="col col-md-12 col-xs-12 col-sm-12">
+                                  <br>
+                                  <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/products" style="color: rgb(31, 109, 211) !important;text-decoration:underline !important;">See More Products</a>
+                                </div>
+                                 <br>
+                      </div>
+
+                    </div>
+                </div>
+         
+             
+              </div>
+<br>
+
+              <div class="box padding" style="padding:10px !important;overflow:scroll !important;">
+                  <div class="col-md-3 col-sm-3 col-xs-3 pull-right">
+                    <select ng-model="dropfilter" ng-change="filter_status(dropfilter)">
+                      <option value="" selected>All</option>
+                      <option value="1" selected>Pending</option>
+                      <option value="2" selected>Successful</option>
+                      <option value="0" selected>Declined</option>
+                    </select>
+                  </div>
+                        <b style="padding: 4px;color:#000;">Most Recent Transactions</b>
+                    <br>
+                   <table class="table table-hover">
+                            <tbody>
+                              <tr style="color:rgb(39, 38, 38);background-color: rgb(252, 248, 248);border: 1px solid rgb(247, 244, 244);">
+                                    <th>Transaction ID</th>
+                                    <th>Transaction Type</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th></th>
+                            </tr>
+                  
+                            <tr ng-repeat="p in transactions | filter:{status:dropfilter} | orderBy:'-_id'" style="cursor:pointer;"  data-toggle="modal" data-target="#viewtransaction"  ng-click="select_transaction(p)">
+                              <td>{{p.transaction_id}}</td>
+                              <td><v>{{p.name | capitalize}}</v> <small class="orange">{{p.type | capitalize}}</small></td>  
+                              <td>
+                                <b class="black" ng-if="p.status==1">Pending...</b>
+                                <b class="red" ng-if="p.status==0">Declined</b>
+                                <b class="green" ng-if="p.status==2">Successful</b>
+                              </td>
+                              <td>
+                                <b ng-if="p.type=='cryptocurrency'">{{p.symbol || '$'}} {{p.amount || 0}}</b>
+                                <div ng-if="p.type=='gift card'">
+                                  <b ng-if="card.quantity > 0" ng-repeat="card in p.cards">{{p.symbol || '$'}} {{card.amount || 0}} ,</b>
+                                </div>
+                              </td>
+                              <td>{{p.date_created | date}}</td>
+                            </tr>
+                  
+                          </tbody>
+                        </table>  
+
+
+                        <div class="text-center padding" ng-if="!transactions || transactions.length < 1">
+                         <br><v>You Haven't Made Any Transaction Yet</v><br> 
+                        </div>      
+                </div>
+
+
+
+
+              </div>
+ 
+            </div>
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div ng-include src="'templates/popups/sell_asset.html'"></div>
+<div ng-include src="'templates/popups/buy_asset.html'"></div>
+ 
+
+<div ng-include src="'templates/popups/view_transaction.html'"></div>

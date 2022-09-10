@@ -1,0 +1,132 @@
+
+<div class="hidden-md hidden-lg" ng-include src="'templates/include/banner.html'"></div>
+  
+
+<div class="hidden-sm hidden-xs col-md-2" ng-include src="'templates/include/side.html'"></div>   
+<div class="col-sm-12 col-md-10" style="background-color: rgb(4, 46, 85) !important;">
+
+
+
+    <section>
+    
+
+
+
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <br>
+            <form class="center-box text-center"> 
+              <div class="rounded-circle rounded-lg" style="background-image:url('images/default.png');background-size: contain;background-repeat: no-repeat;background-position: center;height: 80px !important;">
+              </div>
+              <br>
+              <h4 class="black">
+                {{user.first_name | capitalize}} {{user.last_name | capitalize}}<br><br>
+                <small class="black">ObicID <b class="orange">{{user.o_id}}</b></small>
+              </h4>  
+              <div class="text-center" ng-if="!user.phone_verified || !user.bank_account.bank.Name">
+                <small style="color: red !important;" ng-if="!user.bank_account.bank.Name">Your bank details have not been verified yet</small>
+                <br>
+                <small style="color: red !important;" ng-if="!user.phone_verified">Your phone number has not been verified yet</small>
+              </div>
+              <hr>
+
+              <div class="box border-radius" style="padding: 11px !important;">
+                <br>
+                 <div class="box-title padding">
+                     <select class="form-control2 pull-right" style="max-width: 100px !important; float:right !important;" ng-model="selected_currency" ng-change="change_currency(selected_currency)">
+                         <option value="ngn">Nigerian Naira</option>
+                         <option value="usd" selected>US Dollars</option>
+                     </select>
+                     <small><b>Obic Wallet</b></small>
+                 </div>
+                 <br>
+                 <div class="box-body padding">
+                     <h2 ng-if="selected_currency=='ngn'"><b class="balanced green">{{naira_wallet_balance || 0 | currency}}</b></h2>
+                     <h2 ng-if="selected_currency=='usd'"><b class="balanced green">${{naira_wallet_balance / usd_naira.sell_rates || 0 | number:2}}</b></h2>
+                </div>
+                 <div class="box-footer text-center padding">
+                     <a data-toggle="modal" data-target="#fund" class="pull-left btn btn-sm btn-default"><span class="fas fa-sign-in-alt"></span> Deposit</a>
+                     <a data-toggle="modal" data-target="#widthdraw" class="pull-right btn btn-sm btn-warning"><span class="fas fa-share-square"></span> Widthdraw</a>
+                 </div> 
+                 <br>
+                  <div class="text-center">
+                    <a data-toggle="modal" class="link text-center" data-target="#naira_transactions">View Transactions</a>
+                  </div>
+                 <br><br>
+             </div>
+
+              <li class="list-group-item">
+                  <small><b>Status</b></small>
+                  <div class="pull-right">
+                    <small ng-if="verification_level() >= 3" class="green">verified (3/3)</small>
+                    <small ng-if="!verification_level() || verification_level() < 3" class="grey">unverified
+                    ({{verification_level() || 0}}/3)
+                    </small>
+                  </div>
+              </li>
+              <li class="list-group-item">
+                  <small><b>Date Joined</b> </small>
+                  <div class="pull-right">
+                    <small><b class="black">{{user.date_created | date}}</b></small>
+                  </div>
+              </li>    
+    <br>
+
+  <button data-toggle="modal" data-target="#logout" style="margin:auto !important;color: aliceblue !important;" class="btn btn-danger btn-sm btn-small hidden-sm">
+    &nbsp;&nbsp;&nbsp;<b>Logout</b>&nbsp;&nbsp;&nbsp;
+  </button>
+  <br>
+</form>
+        </div>
+          
+
+
+          <div class="col-xs-12 col-md-8 col-sm-12">
+        
+<br>
+            <div class="nav-tabs-custom" style="height:auto !important;width: 100% !important;">
+              <ul class="nav nav-tabs" style="height: 40px !important;"> 
+                 <li class="active"><a data-target="#settings" data-toggle="tab" aria-expanded="false">Personal</a></li>
+                 <li class=""><a data-target="#password_change" data-toggle="tab" aria-expanded="false">Security</a></li>
+                 <li class=""><a data-target="#bank" data-toggle="tab" aria-expanded="false">Deposit</a></li>
+              </ul>
+              <div class="tab-content" style="background-color:rgb(255, 255, 255) !important;float:left !important;width: 100% !important;">
+              
+                <div class="tab-pane bg-white" id="password_change">     
+                    <div ng-include src="'templates/tabs/security.html'"></div>
+                </div>
+  
+                <div class="tab-pane bg-white active" id="settings">
+                  <div ng-include src="'templates/tabs/account.html'"></div>
+                </div>
+
+                <div class="tab-pane bg-white" id="bank">
+                  <div ng-include src="'templates/tabs/bank.html'"></div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+        
+  
+    </section>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+
+<div ng-include src="'templates/popups/logout.html'"></div>
+    
+    
+    
+<div ng-include src="'templates/popups/widthdraw.html'"></div>
+<div ng-include src="'templates/popups/fund.html'"></div>
+<div ng-include src="'templates/popups/naira_transactions.html'"></div>

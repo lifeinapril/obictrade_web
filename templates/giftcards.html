@@ -1,0 +1,95 @@
+<div ng-include="'shared/banner.html'"></div>
+
+
+
+
+<div class="padding container bg-blue">
+    <div class="text-center padding row">
+        <div class="col-md-6 col-sm-12">
+            <div class="padding text-center">
+                <br><br>
+               
+        <img src="images/bg/products.png" height="150"/>
+        <h1 class="white"><b>Want To Trade Gift Cards For Naira?</b></h1>
+        <h2><small style="line-height: 125%;color:white !important;">We accept iTunes, Amazon, Steam Wallet, Google Play, Apple Store, eBay, Walmart, Sephora, OneVanilla,
+            Nordstrom, Target, JCPenney, Best Buy, Nike, Hotels.com, Macy's, Gamestop, Xbox, Vanilla, G2A, American Express (AMEX),
+            OffGamers, Foot Locker, Visa, Play Station and others.</small></h2>
+        
+                <div class="text-center row">
+                    <a href="/user/contactus" style="background-color:rgb(255, 255, 255) !important;color:rgb(15, 15, 15) !important;margin:auto;width: 200px !important;margin:auto !important;border:none !important; padding: 19px !important;" class="btn btn-warning btn-large btn-lg btn-left"><b>START TRADING</b></a>
+                    <!-- <a ng-if="user" data-dismiss="collapse" href="/user/dashboard" style="background-color:rgb(255, 255, 255) !important;color:rgb(8, 8, 8) !important;margin:auto;width: 200px !important;border:none !important; padding: 19px !important;margin:auto !important;" class="btn btn-warning btn-large btn-lg btn-left"><b>START TRADING</b></a> -->
+                </div>
+                <br>
+            </div>
+        </div> 
+        <div class="col-md-6 col-sm-12 padding">
+            <div class="center-box">  
+                <form>   
+                    <div class="text-center">
+                        <b class="black">Our Rates:<br><small style="color: rgb(187, 187, 187) !important;">The Best Every Time.</small></b>
+                    </div>
+                    <br>
+                    <select name="asset" ng-model="selected_asset" ng-change="check_rates(selected_asset)"  ng-options="asset as asset.name for asset in assets | filter:{type:'gift card'}">
+                    </select>
+                    <select name="currency" ng-model="currency" ng-change="change_currency(currency)"  ng-options="curr as curr.name + ' ('+curr.symbol+')' for curr in selected_asset.currencies">
+                    </select>
+                    <select name="card_type" ng-if="selected_asset.type=='gift card'" ng-model="selected_asset.card_type" ng-change="change_card_type(selected_asset.card_type)"  ng-options="ct as ct for ct in selected_asset.card_types">
+                    </select>
+                    <fieldset class="text-center">
+                      <b class="black">Rate</b>
+                       <h3 style="font-size: 22px !important;color: rgb(4, 82, 1);">{{selected_asset.rates || 0 | currency:'₦':0}}/{{selected_asset.symbol || '$'}}</h3>
+                       <input type="text" ng-model="amount" placeholder="Enter Amount ({{selected_asset.symbol || '$'}})">
+                       <b class="black">Total Payout</b>
+                      <h3 style="font-size: 33px !important;color:rgb(39, 202, 39) !important;">{{selected_asset.rates * amount || 0 | currency:'₦'}}</h3>
+                  </fieldset> 
+                  
+                    <br><br>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+
+
+    <section class="bg-white">
+
+        <div class="row">
+  
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+            <img src="images/client11.png" height="30" class="img-fluid" alt="" />
+          </div>
+  
+  
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+            <img src="images/client12.svg" height="30" class="img-fluid" alt="" />
+          </div>
+  
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+            <img src="images/client6.png"  height="30" class="img-fluid" alt="" />
+          </div>
+  
+          
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+              <img src="images/client7.png" height="30" class="img-fluid" alt="" />
+            </div>
+  
+            
+  
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+              <img src="images/client8.png" height="30" class="img-fluid" alt="" />
+            </div>
+  
+            
+  
+          <div class="col-lg-2 col-md-2 col-2 d-flex align-items-center text-center justify-content-center">
+              <img src="images/client9.png" height="30" class="img-fluid" alt="" />
+            </div>
+    
+  
+      </div>
+    </section>
+  
+
+    
+ <div ng-include="'shared/footer.html'"></div>

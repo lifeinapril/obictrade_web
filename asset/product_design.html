@@ -1,0 +1,16 @@
+ <a ui-sref="item({id:products.id})">
+ <div class="animate thumbnail">
+ <input type="hidden" ng-model="pro_quantity" value="1" />
+ <div id="carve"><img src='images/{{products.img}}' class='img-responsive'></div>
+        <div class="caption">
+        <h8>{{ products.brand}} </h8>
+        <hr>
+          <h5><b>{{ products.name}}</b> </h5>
+          <h4>{{ products.price | currency:" N ": 2 }}</h4>
+        
+        </div>
+      </div>
+      </a>
+      
+	  
+     

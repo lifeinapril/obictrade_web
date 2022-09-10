@@ -1,0 +1,30 @@
+
+
+<div class="modal modal-black bg-blue" id="tlogin" ng-controller="Auth">
+    <div class="modal-dialog modal-md">
+    <form ng-submit="login(form)" class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white !important;" class="white ti ti-close"></span></button>
+      </div>
+      <div class="modal-body">
+          <h2 class="text-center"><b style="color:rgb(253, 247, 247) !important;">Account Login.</b></h2>
+          <h5 class="text-center" style="color: rgb(247, 245, 245) !important;">you don't have an account yet? <b data-dismiss="modal" style="color:rgb(0, 106, 155);cursor: pointer !important;" ng-click="go_register()">Create An Account</b></h5>
+          <e ng-if="error">{{error}}</e>
+
+          <br>
+              <label><b>Email</b> </label>
+              <input type="email"  style="background:transparent !important;border-bottom: 3px solid rgb(31, 45, 71)  !important;color: beige !important;" ng-model="form.email" placeholder="Enter your email" required>
+              
+              <label for="pwd"><b>Password</b> </label>
+              <input type="password" style="background:transparent !important;border-bottom: 3px solid rgb(31, 45, 71) !important;color: beige !important;" ng-model="form.password" placeholder="Provide your password" required>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" ng-show="!show_loader" class="btn btn-lg btn-warning">Login</button>
+        <b ng-show="show_loader">Please Wait...</b>
+        <br>
+        <h5 class="text-center" style="color: rgb(241, 238, 238) !important;">Forgot Your Password? <b data-dismiss="modal" style="color:rgb(0, 106, 155); font-size:16px !important;cursor: pointer !important;" ng-click="go_reset()">Reset Password</b></h5>
+    </div>
+      </form>
+    </div>
+    </div>

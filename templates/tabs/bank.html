@@ -1,0 +1,57 @@
+
+      <section class="bg-white">    
+                <div  style="width: 100vw !important;float: left !important;" ng-if="!user.bank_account.removed && user.bank_account.bank">
+                  <form style="width: 100vw !important;float: left !important;">
+                  <ul class="list-group">
+                      <li class="list-group-item">
+                        <label class="black">Bank</label>
+                        <h5 class="black">
+                            {{user.bank_account.bank.Name || '...'}}
+                        </h5>
+                      </li>     
+                      <li class="list-group-item">
+                        <label class="black">Account Number</label>
+                        <h5  class="black">
+                            {{user.bank_account.account_number || '...'}}
+                        </h5>
+                      </li>   
+                  </ul>
+                  <button ng-click="remove_bank()" class="btn btn-sm btn-default">Change</button>
+                  </form>
+            </div>
+               
+
+
+               <div ng-if="user.bank_account.removed || !user.bank_account.bank">
+               
+
+
+                          <form ng-submit="update_profile(user)">
+                            <h6 ng-if="!user.bank_account.bank" class="red">Your deposit account isn't verified yet. click <a style="color:rgb(0, 81, 255);text-decoration:underline;" ng-click="verify_bank_account(user)">Here</a> to verify your account.</h6>
+                              <label class="black">Bank</label>
+                                <select class="select-box" ng-change="verify_bank_account(user)" ng-model="user.bank_account.bank" value="{{bank}}" ng-options="bank as bank.Name for bank in banks">
+                                </select>
+                              <label class="black">Account Number</label>
+                                <input type="text" ng-keyup="verify_bank_account(user)" ng-model="user.bank_account.account_number" placeholder="Account Number"/>
+                            
+                          <div ng-if="!verifying">
+                          <fieldset ng-if="verification.accountname" style="padding:5px !important;">
+                            <small class="black">Account Name:</small><br>
+                            <b class="black">{{verification.accountname}}</b>
+                          </fieldset>
+                          </div>
+                          <div ng-if="verifying">
+                            <b class="black">verifying......</b>
+                          </div>
+                          <br>
+                          
+                          <button type="submit" ng-disabled="!verification.accountname" ng-show="!show_loader" class="btn btn-black">Verify & Save</button>
+                          <b ng-show="show_loader">Please Wait...</b>
+                          </form>
+
+
+
+                  </div>
+
+
+                  </section>
