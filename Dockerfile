@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR /usr/src/web
+WORKDIR /obictrade_web
 COPY ./package.json .
 RUN npm install
 COPY . .
